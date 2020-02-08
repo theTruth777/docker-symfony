@@ -20,7 +20,6 @@ services:
             - "9000:9001"
         volumes:
             - ./src/backend:/var/www/symfony:cached
-            - ./logs/symfony:/var/www/symfony/var/log:cached
         depends_on:
             - db
         networks:
