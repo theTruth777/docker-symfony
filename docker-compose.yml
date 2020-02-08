@@ -1,7 +1,9 @@
 version: '3.6'
 services:
     db:
-        container_name: db
+        env_file:
+            - .env
+        container_name: ${PROJECT_NAME}-database
         image: mysql
         command: ["--default-authentication-plugin=mysql_native_password"]
         ports:
@@ -14,7 +16,9 @@ services:
         networks:
             - db
     php:
-        container_name: php-fpm
+        env_file:
+          - .env
+        container_name: ${PROJECT_NAME}-php-fpm
         build: ./setup/php-fpm
         ports:
             - "9000:9001"
@@ -26,7 +30,9 @@ services:
             - db
             - php
     nginx:
-        container_name: nginx
+        env_file:
+            - .env
+        container_name: ${PROJECT_NAME}-nginx
         build: ./setup/nginx
         ports:
             - "80:80"
