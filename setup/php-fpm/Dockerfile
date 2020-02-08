@@ -53,6 +53,6 @@ RUN apk --no-cache add curl
 RUN addgroup www-data
 RUN adduser -D -g '' -G www-data www-data
 
-WORKDIR /var/www/symfony
-RUN chown -R www-data:www-data /var/www/symfony
+WORKDIR /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 EXPOSE 9001
