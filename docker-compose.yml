@@ -29,6 +29,17 @@ services:
         networks:
             - db
             - php
+    react:
+        env_file:
+            - .env
+        container_name: ${PROJECT_NAME}-react-app
+        build: ./setup/node
+        command: yarn install && yarn start
+        volumes:
+            - ./src/frontend:/usr/app/
+        ports:
+            - "3000:3000"
+
     nginx:
         env_file:
             - .env
@@ -43,6 +54,7 @@ services:
         volumes:
             - ./src/logs/nginx:/var/log/nginx:cached
             - ./src/backend:/var/www/html:cached
+            - ./src/frontend:/var/www/app:cached
 
 networks:
     db:
