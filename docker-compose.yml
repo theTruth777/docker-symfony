@@ -41,7 +41,7 @@ services:
         networks:
             - php
         volumes:
-            - ./logs/nginx:/var/log/nginx:cached
+            - ./src/logs/nginx:/var/log/nginx:cached
             - ./src/backend:/var/www/html:cached
 
 networks:
