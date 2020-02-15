@@ -34,7 +34,9 @@ services:
             - .env
         container_name: ${PROJECT_NAME}-react-app
         build: ./setup/node
-        command: yarn install && yarn start
+        command: >
+            sh -c "yarn install && yarn start"
+
         volumes:
             - ./src/frontend:/usr/app/
         ports:
