@@ -41,6 +41,8 @@ services:
             - ./src/frontend:/usr/app/
         ports:
             - "3000:3000"
+        networks:
+            - react
 
     nginx:
         env_file:
@@ -51,8 +53,10 @@ services:
             - "80:80"
         depends_on:
             - php
+            - react
         networks:
             - php
+            - react
         volumes:
             - ./src/logs/nginx:/var/log/nginx:cached
             - ./src/backend:/var/www/html:cached
@@ -61,4 +65,5 @@ services:
 networks:
     db:
     php:
+    react:
     elk_stack:
