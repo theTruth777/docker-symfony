@@ -66,4 +66,3 @@ networks:
     db:
     php:
     react:
-    elk_stack:
